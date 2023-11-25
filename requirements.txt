@@ -1,0 +1,2 @@
+langchain
+webex_bot==0.3.4
