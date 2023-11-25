@@ -125,3 +125,45 @@ The response visible to the user inside the WebEx Teams app is:
 Rush is a Canadian rock band that was formed in 1968. The band's music has been described as progressive rock, hard rock, and heavy metal. They are known for their complex compositions, virtuosic musicianship, and concept albums. Some of their most popular songs include "Tom Sawyer," "The Spirit of Radio," "Limelight," and "Freewill."
 ```
 
+## GPU debugging
+After you have started the code, run the `nvidia-smi` command to make sure the model is loaded in GPU memory:
+
+```
+chris@c245-a16-1:~$ nvidia-smi
+Sat Nov 25 10:25:00 2023
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 545.23.08              Driver Version: 545.23.08    CUDA Version: 12.3     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  NVIDIA A16                     On  | 00000000:85:00.0 Off |                    0 |
+|  0%   52C    P0              29W /  62W |   1898MiB / 15356MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   1  NVIDIA A16                     On  | 00000000:86:00.0 Off |                    0 |
+|  0%   53C    P0              27W /  62W |   1212MiB / 15356MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   2  NVIDIA A16                     On  | 00000000:87:00.0 Off |                    0 |
+|  0%   44C    P0              27W /  62W |   1212MiB / 15356MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+|   3  NVIDIA A16                     On  | 00000000:88:00.0 Off |                    0 |
+|  0%   40C    P0              27W /  62W |   1212MiB / 15356MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
+|    0   N/A  N/A    562426      C   python                                     1884MiB |
+|    1   N/A  N/A    562426      C   python                                     1198MiB |
+|    2   N/A  N/A    562426      C   python                                     1198MiB |
+|    3   N/A  N/A    562426      C   python                                     1198MiB |
++---------------------------------------------------------------------------------------+
+chris@c245-a16-1:~$
+```
