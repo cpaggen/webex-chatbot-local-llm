@@ -21,7 +21,7 @@
 import os
 import sys
 import logging
-from   langchain.llms import LlamaCpp
+from langchain_community.llms import LlamaCpp
 from   webex_bot.webex_bot import WebexBot
 from   webex_bot.models.command import Command
 
@@ -54,7 +54,7 @@ class LLM_command(Command):
 def main():
     # load the model locally
     llm = LlamaCpp(
-        model_path="/home/chris/MODELS/synthia-7b-v2.0-16k.Q4_K_M.gguf",
+        model_path="synthia-7b.gguf",
         n_ctx=4096,
         # number of layers to offload to the GPU
         # do not set to maximum (35 layers for this model)
